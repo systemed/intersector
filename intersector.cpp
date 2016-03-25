@@ -82,9 +82,11 @@ int main(int argc, char* argv[]) {
 
 				// Add to each node
 				nodeId = 0;
-				for (uint k=0; k<pbfWay.refs_size(); k++) {
+				uint length = pbfWay.refs_size();
+				for (uint k=0; k<length; k++) {
 					nodeId += pbfWay.refs(k);
 					junctionNodes[nodeId].push_back(code);
+					if (k>0 && k<length-1) { junctionNodes[nodeId].push_back(code); }	// both 'in' and 'out'
 				}
 			}
 		}
